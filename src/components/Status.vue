@@ -1,6 +1,7 @@
 <template>
   <div class="status">
     <h1>{{ msg }}</h1>
+    <p>{{ status }}</p>
     
   </div>
 </template>
@@ -10,10 +11,20 @@ export default {
   name: 'status',
   data () {
     return {
-      msg: 'Uhuchain status'
+      msg: 'Uhuchain status',
+      status: ''
     }
+  },
+  mounted () {
+    this.$http.get('http://localhost:3333/v1/status').then(response => {
+      // get body data
+      this.status = response.body
+    }, response => {
+      console.log('error')
+    })
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

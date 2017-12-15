@@ -14,13 +14,10 @@
 
       <b-navbar-nav>
         <b-nav-item router-link to="/status">Status</b-nav-item>
+        <b-nav-item router-link to="/car">Cars</b-nav-item>
         <b-nav-item-dropdown text="Ebike">
           <b-dropdown-item href="#">New Ebike</b-dropdown-item>
           <b-dropdown-item href="#">Get Ebike</b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="Car">
-          <b-dropdown-item href="#">New car</b-dropdown-item>
-          <b-dropdown-item href="#">Get car</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
 
@@ -51,7 +48,6 @@
 
     </b-collapse>
   </b-navbar>
-    <img src="./assets/logo.png">
     <router-view></router-view>
   </div>
 </template>

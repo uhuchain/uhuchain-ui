@@ -16,7 +16,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('http://localhost:3333/v1/status').then(response => {
+    this.$http.get(process.env.UHUCHAIN_API_URL + '/status').then(response => {
       // get body data
       this.status = response.body
     }, response => {

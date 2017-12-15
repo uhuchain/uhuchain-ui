@@ -16,12 +16,42 @@
                             placeholder="12345">
               </b-form-input>
             </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
+            <b-button type="submit" variant="primary">Load</b-button>
+            <b-button v-on:click="postCar()" variant="primary" :disabled="saveDisabled">Save</b-button>
           </b-form>         
         </b-col>
         <b-col></b-col>
     </b-row>
-    
+    <b-row>
+        <b-col></b-col>
+        <b-col sm="6">
+          <b-form>
+            <b-form-group id="CarBrandInputGroup"
+                          label="Brand:"
+                          description="Brand of the car"
+                          class="text-left">
+              </b-form-input>
+              <b-form-input id="carIdInput"
+                            type="text"
+                            v-model="car.brand"
+                            placeholder="brand">
+            </b-form-input>
+            </b-form-group>
+            <b-form-group id="CarModelInputGroup"
+                          label="Model:"
+                          description="Model of the car"
+                          class="text-left">
+              </b-form-input>
+              <b-form-input id="carIdInput"
+                            type="text"
+                            v-model="car.model"
+                            placeholder="model">
+            </b-form-input>
+            </b-form-group>
+          </b-form>         
+        </b-col>
+        <b-col></b-col>
+    </b-row>
     </b-container>
   </div>
 </template>
@@ -34,7 +64,8 @@ export default {
     return {
       form: {
         id: ''
-      }
+      },
+      saveDisabled: true
     }
   },
   mixins: [uhuchainApi],
@@ -42,7 +73,7 @@ export default {
     onSubmit (evt) {
       evt.preventDefault()
       this.getCar(this.form.id)
-      console.log(this.getCarResult)
+      this.saveDisabled = false
       // alert(JSON.stringify(this.form))
     },
     onReset (evt) {

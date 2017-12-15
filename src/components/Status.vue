@@ -7,21 +7,17 @@
 </template>
 
 <script>
+import uhuchainApi from '../mixins/uhuchainApi.js'
 export default {
   name: 'status',
   data () {
     return {
-      msg: 'Uhuchain status',
-      status: ''
+      msg: 'Uhuchain status'
     }
   },
+  mixins: [uhuchainApi],
   mounted () {
-    this.$http.get(process.env.UHUCHAIN_API_URL + '/status').then(response => {
-      // get body data
-      this.status = response.body
-    }, response => {
-      console.log('error')
-    })
+    this.getStatus()
   }
 }
 
